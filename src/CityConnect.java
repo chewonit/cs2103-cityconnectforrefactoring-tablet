@@ -1,3 +1,15 @@
+/*
+ * ==============NOTE TO STUDENTS======================================
+ * This class is not written in pure Object-Oriented fashion. That is 
+ * because we haven't covered OO theory yet. Yes, it is possible to 
+ * write non-OO code using an OO language.
+ * ====================================================================
+ */
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  * This class is used to store and retrieve the distance between various locations 
  * A route is assumed to be bidirectional. i.e., a route from CityA to CityB is 
@@ -24,19 +36,6 @@
 
  * @author Dave Jun
  */
-
-/*
- * ==============NOTE TO STUDENTS======================================
- * This class is not written in pure Object-Oriented fashion. That is 
- * because we haven't covered OO theory yet. Yes, it is possible to 
- * write non-OO code using an OO language.
- * ====================================================================
- */
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class CityConnect {
 
 	/*
