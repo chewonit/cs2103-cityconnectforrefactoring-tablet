@@ -33,6 +33,8 @@
  * ====================================================================
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CityConnect {
@@ -100,6 +102,14 @@ public class CityConnect {
 	 * ====================================================================
 	 */
 	public static void main(String[] args) {
+		
+		try {
+			scanner = new Scanner( new File("bin/input.txt") );
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		showToUser(MESSAGE_WELCOME);
 		while (true) {
 			System.out.print("Enter command:");
