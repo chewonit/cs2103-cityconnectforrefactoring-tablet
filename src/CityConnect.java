@@ -103,8 +103,7 @@ public class CityConnect {
 		showToUser(MESSAGE_WELCOME);
 		while (true) {
 			System.out.print("Enter command:");
-			String command = scanner.nextLine();
-			String userCommand = command;
+			String userCommand = scanner.nextLine();
 			String feedback = executeCommand(userCommand);
 			showToUser(feedback);
 		}
