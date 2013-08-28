@@ -59,6 +59,8 @@ public class CityConnect {
 		ADD_ROUTE, GET_DISTANCE, INVALID, EXIT
 	};
 
+	private static final int STORAGE_SIZE = 10;
+
 	// This is used to indicate there is no suitable slot to store route
 	private static final int SLOT_UNAVAILABLE = -1;
 	
@@ -68,6 +70,7 @@ public class CityConnect {
 	// These are the correct number of parameters for each command
 	private static final int PARAM_SIZE_FOR_ADD_ROUTE = 3;
 	private static final int PARAM_SIZE_FOR_GET_DISTANCE = 2;
+	private static final int PARAM_MAX_SIZE = 3;
 
 	// These are the locations at which various parameters will appear in a command
 	private static final int PARAM_POSITION_START_LOCATION = 0;
@@ -75,7 +78,7 @@ public class CityConnect {
 	private static final int PARAM_POSITION_DISTANCE = 2;
 
 	// This array will be used to store the routes
-	private static String[][] route = new String[10][3];
+	private static String[][] route = new String[STORAGE_SIZE][PARAM_MAX_SIZE];
 
 	/*
 	 * These are the locations at which various components of the route will be
