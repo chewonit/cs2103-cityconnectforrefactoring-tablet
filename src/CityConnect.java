@@ -63,7 +63,7 @@ public class CityConnect {
 
 	// This is used to indicate there is no suitable slot to store route
 	private static final int SLOT_UNAVAILABLE = -1;
-	
+
 	// This is used to indicate the route was not found in the database
 	private static final int NOT_FOUND = -2;
 
@@ -72,7 +72,8 @@ public class CityConnect {
 	private static final int PARAM_SIZE_FOR_GET_DISTANCE = 2;
 	private static final int PARAM_MAX_SIZE = 3;
 
-	// These are the locations at which various parameters will appear in a command
+	// These are the locations at which various parameters will appear in a 
+	// command
 	private static final int PARAM_POSITION_START_LOCATION = 0;
 	private static final int PARAM_POSITION_END_LOCATION = 1;
 	private static final int PARAM_POSITION_DISTANCE = 2;
@@ -106,12 +107,12 @@ public class CityConnect {
 	public static void main(String[] args) {
 		
 		try {
-			scanner = new Scanner( new File("bin/input.txt") );
+			scanner = new Scanner(new File("bin/input.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		showToUser(MESSAGE_WELCOME);
 		while (true) {
 			System.out.print("Enter command:");
@@ -176,8 +177,7 @@ public class CityConnect {
 	 * This operation determines which of the supported command types the user
 	 * wants to perform
 	 * 
-	 * @param commandTypeString
-	 *            is the first word of the user command
+	 * @param commandTypeString is the first word of the user command
 	 */
 	private static COMMAND_TYPE determineCommandType(String commandTypeString) {
 		if (commandTypeString == null) {
@@ -189,7 +189,7 @@ public class CityConnect {
 		} else if (commandTypeString.equalsIgnoreCase("getdistance")) {
 			return COMMAND_TYPE.GET_DISTANCE;
 		} else if (commandTypeString.equalsIgnoreCase("exit")) {
-		 	return COMMAND_TYPE.EXIT;
+			return COMMAND_TYPE.EXIT;
 		} else {
 			return COMMAND_TYPE.INVALID;
 		}
@@ -198,9 +198,8 @@ public class CityConnect {
 	/**
 	 * This operation is used to find the distance between two locations
 	 * 
-	 * @param userCommand
-	 *            is the full string user has entered as the command
-	 * @return the distance
+	 * @param userCommand 	is the full string user has entered as the command
+	 * @return 				the distance
 	 */
 	private static String getDistance(String userCommand) {
 
@@ -213,21 +212,22 @@ public class CityConnect {
 		String newStartLocation = parameters[PARAM_POSITION_START_LOCATION];
 		String newEndLocation = parameters[PARAM_POSITION_END_LOCATION];
 
-		int position = getPositionOfExistingRoute(newStartLocation, newEndLocation);
+		int position = getPositionOfExistingRoute(newStartLocation,
+				newEndLocation);
 
 		if (position == NOT_FOUND) {
 			return String.format(MESSAGE_NO_ROUTE, newStartLocation,
 					newEndLocation);
 		} else {
-			return String.format(MESSAGE_DISTANCE, newStartLocation, newEndLocation,
-					route[position][STORAGE_POSITION_DISTANCE]);
+			return String.format(MESSAGE_DISTANCE, newStartLocation,
+					newEndLocation, route[position][STORAGE_POSITION_DISTANCE]);
 		}
 
 	}
 
 	/**
-	 * @return Returns the position of the route represented by 
-	 *    newStartLocation and newEndLocation. Returns NOT_FOUND if not found.
+	 * @return Returns the position of the route represented by newStartLocation
+	 *         and newEndLocation. Returns NOT_FOUND if not found.
 	 */
 	private static int  getPositionOfExistingRoute(String newStartLocation,
 			String newEndLocation) {
@@ -237,9 +237,9 @@ public class CityConnect {
 			String existingEndLocation = route[i][STORAGE_POSITION_END_LOCATION];
 
 			if (existingStartLocation == null) { //beginning of empty slots
-				return NOT_FOUND; 
+				return NOT_FOUND;
 			} else if (sameRoute(existingStartLocation, existingEndLocation,
-					newStartLocation, newEndLocation)) { 
+					newStartLocation, newEndLocation)) {
 				return i;
 			}
 		}
@@ -250,15 +250,14 @@ public class CityConnect {
 	 * This operation adds a route to the storage. If the route already exists,
 	 * it will be overwritten.
 	 * 
-	 * @param userCommand
-	 *            (although we receive the full user command, we assume without
-	 *            checking the first word to be 'addroute')
-	 * @return status of the operation
+	 * @param userCommand 	(although we receive the full user command, we assume
+	 *            			without checking the first word to be 'addroute')
+	 * @return 				status of the operation
 	 */
 	private static String addRoute(String userCommand) {
-		
+
 		String[] parameters = splitParameters(removeFirstWord(userCommand));
-		
+
 		if (parameters.length < PARAM_SIZE_FOR_ADD_ROUTE) {
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 		}
@@ -292,9 +291,9 @@ public class CityConnect {
 	}
 
 	/**
-	 * @return Returns a suitable slot for the route represented by 
-	 *   newStartLocation and newEndLocation. Returns SLOT_UNAVAILABLE if
-	 *   no suitable slot is found.
+	 * @return Returns a suitable slot for the route represented by
+	 *         newStartLocation and newEndLocation. Returns SLOT_UNAVAILABLE if
+	 *         no suitable slot is found.
 	 */
 	private static int getSlotPosition(String newStartLocation,
 			String newEndLocation) {
